@@ -1,0 +1,19 @@
+data:
+    data_root: /home/lmk/datasets/OASIS
+    input_size: [192,192,96]
+
+train:
+    model: 'PDEnet_featurefuse'  # 'VxmNet'\'PDEnet'\'PDEnet_featurefuse'
+    lr: 0.0001
+    batch_size: 1
+    loss: {'mse': 1, 'grad': 1}
+    stageloss: -1   #
+    interpolate_mode: 'trilinear'           #'trilinear'   or   'nearest'
+    #step_by_step: True   #不同分辨率，逐步开启训练
+    #全部用nearest,但最后一层是trilinear
+model:
+    encoder_nc: [2, 16, 32, 32, 32]
+    decoder_nc: [32, 32, 32, 32, 32 ,16, 16]
+    flow_downsize: 1
+    moveMultiply: 1
+    flowNum: 3
